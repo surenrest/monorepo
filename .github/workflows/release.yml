@@ -24,6 +24,12 @@ jobs:
         run: |
           env=$(awk -F- '{print $2}' <<< '${{steps.latest-release.outputs.tag_name}}')
           echo $env
+          echo 1 $(git tag)
+          echo 2 $(git tag | grep $env)
+          echo 3 $(git tag | grep $env | tail -r)
+          echo 3 $(git tag | grep $env | tail -r)
+          echo 4 $(git tag | grep $env | tail -r | head -n 2)
+          echo 5 $(git tag | grep $env | tail -r | head -n 2 | tail -1)
           echo ::set-output name=this_sha::$(git rev-list -n 1 $(git tag | grep $env | tail -r | head -n 1))
           echo ::set-output name=that_sha::$(git rev-list -n 1 $(git tag | grep $env | tail -r | head -n 2 | tail -1))
 
