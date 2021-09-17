@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest # windows-latest | macos-latest
+    name: Release
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
+
+      - name: Check files in moduleA changed
+        id: changed-files
+        uses: tj-actions/changed-files@v1.1.2
+        with:
+          base_sha:
+          files: |
+            moduleA/index.txt
+
+      - name: Test
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          echo 'ModuleA changed gonna test it'
