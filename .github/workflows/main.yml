@@ -9,20 +9,64 @@ on:
       - master
 
 jobs:
-  build:
+  build-moduleA:
     runs-on: ubuntu-latest # windows-latest | macos-latest
-    name: Test changed-files
+    name: ModuleA
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
 
-      - name: Get changed files
+      - name: Check files in moduleA changed
         id: changed-files
         uses: tj-actions/changed-files@v1.1.2
+        with:
+          files: |
+            moduleA/*
 
-      - name: List all modified files
+      - name: Test
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
-          for file in "${{ steps.changed-files.outputs.all_modified_files }}"; do
-            echo "$file was modified"
-          done
+          echo 'ModuleA changed gonna test it'
+
+  build-serviceB:
+    runs-on: ubuntu-latest # windows-latest | macos-latest
+    name: ModuleA
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
+
+      - name: Check files in moduleA changed
+        id: changed-files
+        uses: tj-actions/changed-files@v1.1.2
+        with:
+          files: |
+            moduleA/*
+            serviceA/*
+
+      - name: Test
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: |
+          echo 'serviceA or its dependency changed gonna test it'
+
+  build-serviceA:
+    runs-on: ubuntu-latest # windows-latest | macos-latest
+    name: ModuleA
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
+
+      - name: Check files in moduleA changed
+        id: changed-files
+        uses: tj-actions/changed-files@v1.1.2
+        with:
+          files: |
+            moduleA/*
+            serviceB/*
+
+      - name: Test
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: |
+          echo 'serviceB or its dependency changed gonna test it'
