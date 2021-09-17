@@ -29,9 +29,9 @@ jobs:
         run: |
           echo 'ModuleA changed gonna test it'
 
-  build-serviceB:
+  build-serviceA:
     runs-on: ubuntu-latest # windows-latest | macos-latest
-    name: ModuleA
+    name: serviceA
     steps:
       - uses: actions/checkout@v2
         with:
@@ -50,9 +50,9 @@ jobs:
         run: |
           echo 'serviceA or its dependency changed gonna test it'
 
-  build-serviceA:
+  build-serviceB:
     runs-on: ubuntu-latest # windows-latest | macos-latest
-    name: ModuleA
+    name: serviceB
     steps:
       - uses: actions/checkout@v2
         with:
