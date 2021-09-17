@@ -25,7 +25,7 @@ jobs:
             moduleA/index.txt
 
       - name: Test
-        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           echo 'ModuleA changed gonna test it'
 
@@ -46,7 +46,7 @@ jobs:
             serviceA
 
       - name: Test
-        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           echo 'serviceA or its dependency changed gonna test it'
 
@@ -67,6 +67,6 @@ jobs:
             serviceB
 
       - name: Test
-        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           echo 'serviceB or its dependency changed gonna test it'
