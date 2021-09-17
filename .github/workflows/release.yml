@@ -36,7 +36,7 @@ jobs:
           files: |
             moduleA/index.txt
 
-      - name: Test
+      - name: Deploy
         if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           echo 'ModuleA changed gonna test it'
@@ -73,7 +73,7 @@ jobs:
             moduleA
             serviceA
 
-      - name: Test
+      - name: Deploy
         if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           echo 'ModuleA changed gonna test it'
@@ -110,7 +110,7 @@ jobs:
             moduleA
             serviceB
 
-      - name: Test
+      - name: Deploy
         if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           echo 'ModuleA changed gonna test it'
