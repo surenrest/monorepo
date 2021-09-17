@@ -22,7 +22,7 @@ jobs:
         uses: tj-actions/changed-files@v1.1.2
         with:
           files: |
-            moduleA
+            moduleA/index.txt
 
       - name: Test
         if: steps.changed-files-specific.outputs.any_changed == 'true'
