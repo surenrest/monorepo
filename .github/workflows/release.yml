@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  release:
+  release-moduleA:
     runs-on: ubuntu-latest # windows-latest | macos-latest
     name: Release ModuleA
     steps:
@@ -41,7 +41,7 @@ jobs:
         run: |
           echo 'ModuleA changed gonna test it'
 
-  release:
+  release-serviceA:
     runs-on: ubuntu-latest # windows-latest | macos-latest
     name: Release ServiceA
     steps:
@@ -78,7 +78,7 @@ jobs:
         run: |
           echo 'ModuleA changed gonna test it'
 
-  release:
+  release-serviceB:
     runs-on: ubuntu-latest # windows-latest | macos-latest
     name: Release ServiceB
     steps:
