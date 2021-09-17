@@ -22,7 +22,7 @@ jobs:
         uses: tj-actions/changed-files@v1.1.2
         with:
           files: |
-            moduleA/*
+            moduleA
 
       - name: Test
         if: steps.changed-files-specific.outputs.any_changed == 'true'
@@ -42,8 +42,8 @@ jobs:
         uses: tj-actions/changed-files@v1.1.2
         with:
           files: |
-            moduleA/*
-            serviceA/*
+            moduleA
+            serviceA
 
       - name: Test
         if: steps.changed-files-specific.outputs.any_changed == 'true'
@@ -63,8 +63,8 @@ jobs:
         uses: tj-actions/changed-files@v1.1.2
         with:
           files: |
-            moduleA/*
-            serviceB/*
+            moduleA
+            serviceB
 
       - name: Test
         if: steps.changed-files-specific.outputs.any_changed == 'true'
