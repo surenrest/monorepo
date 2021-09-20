@@ -39,7 +39,7 @@ jobs:
       - name: Deploy
         if: steps.changed-files.outputs.any_changed == 'true'
         run: |
-          echo 'ModuleA changed gonna test it'
+          echo 'ModuleA changed gonna deploy it'
 
   release-serviceA:
     runs-on: ubuntu-latest # windows-latest | macos-latest
@@ -76,7 +76,7 @@ jobs:
       - name: Deploy
         if: steps.changed-files.outputs.any_changed == 'true'
         run: |
-          echo 'ModuleA changed gonna test it'
+          echo 'serviceA or its dependency changed gonna deploy it'
 
   release-serviceB:
     runs-on: ubuntu-latest # windows-latest | macos-latest
@@ -113,4 +113,4 @@ jobs:
       - name: Deploy
         if: steps.changed-files.outputs.any_changed == 'true'
         run: |
-          echo 'ModuleA changed gonna test it'
+          echo 'serviceB or its dependencies changed gonna deploy it'
